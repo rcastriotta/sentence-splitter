@@ -4,6 +4,11 @@ import { debugLog } from "../logger.js";
 
 const DEFAULT_PAIR_MARKS: PairMark[] = [
     {
+        key: "alternate double quote",
+        start: `“`,
+        end: `”`
+    },
+    {
         key: "double quote",
         start: `"`,
         end: `"`
