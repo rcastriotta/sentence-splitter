@@ -165,9 +165,9 @@ export class SourceCode {
     /**
      * read node
      * if can not read, return empty string
-     * @returns {TxtNode | false}
+     * @returns {node}
      */
-    readNode(over: number = 0): TxtNode | false {
+    readNode(over: number = 0) {
         if (!this.sourceNode) {
             return false;
         }
@@ -176,9 +176,16 @@ export class SourceCode {
             return false;
         }
         const matchNodeList = this.sourceNode.children.filter((node) => {
+            // <p>[node]</p>
+            //         ^
+            //        range[1]
+            // `< range[1]` prevent infinity loop
+            // https://github.com/azu/sentence-splitter/issues/9
             return node.range[0] <= index && index < node.range[1];
         });
         if (matchNodeList.length > 0) {
+            // last match
+            // because, range is overlap two nodes
             return matchNodeList[matchNodeList.length - 1];
         }
         return false;
