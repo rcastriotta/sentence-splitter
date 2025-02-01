@@ -165,9 +165,9 @@ export class SourceCode {
     /**
      * read node
      * if can not read, return empty string
-     * @returns {TxtNode | false}
+     * @returns {import("@textlint/ast-node-types").TxtNode | false}
      */
-    readNode(over: number = 0): TxtNode | false {
+    readNode(over: number = 0): import("@textlint/ast-node-types").TxtNode | false {
         if (!this.sourceNode) {
             return false;
         }
