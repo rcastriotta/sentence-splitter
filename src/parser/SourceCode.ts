@@ -165,9 +165,9 @@ export class SourceCode {
     /**
      * read node
      * if can not read, return empty string
-     * @returns {node}
+     * @returns {TxtNode | false}
      */
-    readNode(over: number = 0) {
+    readNode(over: number = 0): TxtNode | false {
         if (!this.sourceNode) {
             return false;
         }
